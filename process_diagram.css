@@ -1,0 +1,84 @@
+/*
+	Layout
+*/
+/* positioning for the diagram */
+.process_diagram,
+.process_diagram ol,
+.process_diagram ul,
+.process_diagram li {margin:0 auto; padding:0; display:block; list-style:none; text-align:center; vertical-align:middle;}
+
+.process_diagram li {position:relative;}
+
+.process_diagram,
+.process_diagram ol {display:table; width:100%; border-collapse:collapse; }
+
+.process_diagram > li,
+.process_diagram ol > li {display:table-cell; }
+
+.process_diagram > li,
+.process_diagram ol > li,
+.process_diagram ul > li {padding:.5em 0}
+
+/* a dash before and behind all ul's */
+.process_diagram ul {position:relative; padding:0 1em;}
+.process_diagram ul:before,
+.process_diagram ul:after {position:absolute; content:""; top:50%; width:1em; display:block; border-width:1px 0 0; }
+.process_diagram ul:before {left:0;}
+.process_diagram ul:after {right:0;}
+
+/* put connecting vertical lines */
+.process_diagram ul > li:after,
+.process_diagram ul > li:before {position:absolute; content:""; top:0; bottom:0; width:1em; height:100%; display:block;}
+.process_diagram ul > li:before {left:0; border-width:0 0 0 1px;}
+.process_diagram ul > li:after {right:0; border-width:0 1px 0 0;}
+
+/* correct length and position of dashes for first and last li-item in ul */
+.process_diagram ul > li:first-child:before,
+.process_diagram ul > li:first-child:after {top:50%; bottom:auto; height:50%; }
+.process_diagram ul > li:last-child:before,
+.process_diagram ul > li:last-child:after {top:0; bottom:auto; height:50%;}
+
+/* put left and right dashes */
+.process_diagram li > div {position:relative; }
+.process_diagram li > div:before,
+.process_diagram li > div:after {content:""; top:50%; width:1em; position:absolute; border-width:1px 0 0; height:50%;}
+.process_diagram li > div:after {right:-1em; margin-right:-1px;}
+.process_diagram li > div:before {left:-1em; margin-left:-1px;}
+.process_diagram li:last-child > div:after,
+.process_diagram li:last-child > div:before {top:0; border-width: 0 0 1px;}
+
+/* remove dash for the very first/last nodes */
+.process_diagram > li:first-child > div:before,
+.process_diagram > li:first-child > ul:before,
+.process_diagram > li:first-child > ul > li:before,
+.process_diagram > li:first-child > ul > li > div:first-child:before,
+.process_diagram > li:first-child > ul > li > ol > li:first-child > div:before,
+.process_diagram > li:last-child > div:after,
+.process_diagram > li:last-child > ul:after {border:0;}
+
+.process_diagram li > div {margin:0 1em; padding:1em; border-width:1px; }
+
+/* perhaps no centering? */
+.process_diagram li > div {text-align:left;}
+
+
+/*
+	Style (anything not important for the layout)
+*/
+.process_diagram li > div { background-color:#eef; color:#666; border-style:solid; border-color:#900; }
+
+/* connecting lines between nodes */
+.process_diagram li:before,
+.process_diagram li:after,
+.process_diagram ul:before,
+.process_diagram ul:after,
+.process_diagram div:before,
+.process_diagram div:after {border-style:solid; border-color:#000;}
+
+/* debug purpose: to understand the magic * /
+.process_diagram div:before,
+.process_diagram div:after {border-color:green;}
+
+.process_diagram ul:before,
+.process_diagram ul:after {border-color:red;}
+/**/
