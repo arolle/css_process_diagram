@@ -2,11 +2,11 @@
 
 This gives a basic styling for a diagram of processes. It’s a proof-of-concept of what can be realised just with CSS & HTML.
 
-![Screenshot](http://github.com/arolle/css_process_diagram/screenshot.png)
+![Screenshot](screenshot.png)
 
 To get a clue of the semantics, read further and take a look into the [`index.html`](http://github.com/arolle/css_process_diagram/index.html) source.
 
-Tested to work with Chrome 24, Firefox 16 and Opera 12
+Tested to work with Chrome 24, Firefox 16 and Opera 12 and above.
 
 ---
 
