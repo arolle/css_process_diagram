@@ -1,6 +1,29 @@
-/*
-	Layout
-*/
+/* All parameters */
+:root {
+  --linethick: 3px;
+  --linewidth: 1.8em;
+}
+
+/* node style */
+.process_diagram li > div { background-color:#eef; color:#666; border-style:solid; border-color:#900; text-align:left; }
+
+/* connecting lines between nodes */
+.process_diagram li:before,
+.process_diagram li:after,
+.process_diagram ul:before,
+.process_diagram ul:after,
+.process_diagram div:before,
+.process_diagram div:after {border-style:solid; border-color:#000;}
+
+/* debug connecting lines * /
+.process_diagram div:before,
+.process_diagram div:after {border-color:green;}
+.process_diagram ul:before,
+.process_diagram ul:after {border-color:red;}
+/**/
+
+/************************************************************/
+
 /* positioning for the diagram */
 .process_diagram,
 .process_diagram ol,
@@ -19,18 +42,18 @@
 .process_diagram ol > li,
 .process_diagram ul > li {padding:.5em 0}
 
-/* a dash before and behind all ul's */
-.process_diagram ul {position:relative; padding:0 1em;}
+/* a dash before and behind all uls */
+.process_diagram ul {position:relative; padding:0 var(--linewidth);}
 .process_diagram ul:before,
-.process_diagram ul:after {position:absolute; content:""; top:50%; width:1em; display:block; border-width:1px 0 0; }
+.process_diagram ul:after {position:absolute; content:""; top:50%; width: var(--linewidth); display:block; border-width:var(--linethick) 0 0; }
 .process_diagram ul:before {left:0;}
 .process_diagram ul:after {right:0;}
 
 /* put connecting vertical lines */
 .process_diagram ul > li:after,
-.process_diagram ul > li:before {position:absolute; content:""; top:0; bottom:0; width:1em; height:100%; display:block;}
-.process_diagram ul > li:before {left:0; border-width:0 0 0 1px;}
-.process_diagram ul > li:after {right:0; border-width:0 1px 0 0;}
+.process_diagram ul > li:before {position:absolute; content:""; top:0; bottom:0; width:var(--linewidth); height:100%; display:block;}
+.process_diagram ul > li:before {left:0; border-width:0 0 0 var(--linethick);}
+.process_diagram ul > li:after {right:0; border-width:0 var(--linethick) 0 0;}
 
 /* correct length and position of dashes for first and last li-item in ul */
 .process_diagram ul > li:first-child:before,
@@ -39,15 +62,15 @@
 .process_diagram ul > li:last-child:after {top:0; bottom:auto; height:50%;}
 
 /* put left and right dashes */
-.process_diagram li > div {position:relative; }
+.process_diagram li > div {position:relative; margin:0 var(--linewidth); padding: 1em; border-width:var(--linethick); }
 .process_diagram li > div:before,
-.process_diagram li > div:after {content:""; top:50%; width:1em; position:absolute; border-width:1px 0 0; height:50%;}
-.process_diagram li > div:after {right:-1em; margin-right:-1px;}
-.process_diagram li > div:before {left:-1em; margin-left:-1px;}
+.process_diagram li > div:after {content:""; top:50%; width:var(--linewidth); position:absolute; border-width:var(--linethick) 0 0; height:50%;}
+.process_diagram li > div:after {right: calc(0em - var(--linewidth)); margin-right: calc(0px - var(--linethick));}
+.process_diagram li > div:before {left: calc(0em - var(--linewidth)); margin-left: calc(0px - var(--linethick));}
 .process_diagram li:last-child > div:after,
-.process_diagram li:last-child > div:before {top:0; border-width: 0 0 1px;}
+.process_diagram li:last-child > div:before {top:0; border-width: 0 0 var(--linethick);}
 
-/* remove dash for the very first/last nodes */
+/* remove dash for the very first/last nodes keeping margin and padding */
 .process_diagram > li:first-child > div:before,
 .process_diagram > li:first-child > ul:before,
 .process_diagram > li:first-child > ul > li:before,
@@ -56,29 +79,23 @@
 .process_diagram > li:last-child > div:after,
 .process_diagram > li:last-child > ul:after {border:0;}
 
-.process_diagram li > div {margin:0 1em; padding:1em; border-width:1px; }
+/* remove double dashes */
+ol.process_diagram > li > div:after,
+.process_diagram ol > li > div:after,
+ol.process_diagram > li > ul:after,
+.process_diagram ol > li > ul:after {display:none}
+ol.process_diagram > li > div,
+.process_diagram ol > li > div {margin-right: 0;}
+ol.process_diagram > li > ul,
+.process_diagram ol > li > ul {padding-right: 0;}
 
-/* perhaps no centering? */
-.process_diagram li > div {text-align:left;}
+/* last dashes are not double and need to be recovered */
+ol.process_diagram > li:last-child > div:after,
+.process_diagram ol > li:last-child > div:after,
+ol.process_diagram > li:last-child > ul:after,
+.process_diagram ol > li:last-child > ul:after {display:block;}
+ol.process_diagram > li:last-child > div,
+.process_diagram ol > li:last-child > div {margin-right: var(--linewidth);}
+ol.process_diagram > li:last-child > ul,
+.process_diagram ol > li:last-child > ul {padding-right: var(--linewidth); }
 
-
-/*
-	Style (anything not important for the layout)
-*/
-.process_diagram li > div { background-color:#eef; color:#666; border-style:solid; border-color:#900; }
-
-/* connecting lines between nodes */
-.process_diagram li:before,
-.process_diagram li:after,
-.process_diagram ul:before,
-.process_diagram ul:after,
-.process_diagram div:before,
-.process_diagram div:after {border-style:solid; border-color:#000;}
-
-/* debug purpose: to understand the magic * /
-.process_diagram div:before,
-.process_diagram div:after {border-color:green;}
-
-.process_diagram ul:before,
-.process_diagram ul:after {border-color:red;}
-/**/
