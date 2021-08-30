@@ -60,6 +60,8 @@
 .process_diagram ul > li:first-child:after {top:50%; bottom:auto; height:50%; }
 .process_diagram ul > li:last-child:before,
 .process_diagram ul > li:last-child:after {top:0; bottom:auto; height:50%;}
+.process_diagram ul > li:first-child:last-child:before,
+.process_diagram ul > li:first-child:last-child:after {top:0; bottom:auto; height:50%;}
 
 /* put left and right dashes */
 .process_diagram li > div {position:relative; margin:0 var(--linewidth); padding: 1em; border-width:var(--linethick); }
